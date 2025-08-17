@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Yashwant Sirsate</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -11,7 +15,12 @@
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
     }
-    body { background:#f0f5ff; color:#333; }
+
+    body { 
+      background: linear-gradient(135deg, #001f4d, #004aad, #0077ff); /* Gradient background */
+      color:#fff;
+      min-height:100vh;
+    }
     a { text-decoration:none; color:inherit; }
     ul { list-style:none; }
 
@@ -19,32 +28,76 @@
     .navbar {
       width:100%; padding:15px 10%;
       display:flex; justify-content:space-between; align-items:center;
-      background:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.06);
+      background:rgba(0,0,0,0.3);  /* Transparent dark overlay */
+      box-shadow:0 4px 12px rgba(0,0,0,0.2);
       position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
     }
-    .logo { font-weight:700; font-size:25px; }
+    .logo { font-weight:700; font-size:25px; color:#ffea00; }
     .menu { display:flex; gap:30px; }
-    .menu a { padding:5px 0; border-bottom:2px solid transparent; transition:.3s; }
-    .menu a:hover, .menu .active { color:#0077ff; border-color:#0077ff; }
+    .menu a { 
+      padding:5px 0; 
+      border-bottom:2px solid transparent; 
+      transition:.3s; 
+      color:white;
+      font-weight:500;
+    }
+    .menu a:hover, .menu .active { 
+      color:#ffea00; 
+      border-color:#ffea00;
+    }
 
     /* ====== ABOUT SECTION ====== */
     .about-container{
       max-width:900px;
       margin:80px auto;
-      background:#fff;
+      background:rgba(0, 0, 0, 0.4); /* Semi-transparent card */
       padding:50px;
-      box-shadow:0 8px 24px rgba(0,0,0,0.1);
+      box-shadow:0 8px 24px rgba(0,0,0,0.4);
       border-radius:15px;
+      text-align:center;
+      transition:transform .3s;
     }
+    .about-container:hover { transform: translateY(-5px); }
+
+    .profile-img {
+      width:120px; height:120px;
+      border-radius:50%;
+      object-fit:cover;
+      margin-bottom:20px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.3);
+      border:3px solid #ffea00;
+    }
+
     .about-title{
       font-size:32px;
       margin-bottom:15px;
-      color:#0077ff;
+      color:#ffea00;
       font-weight:600;
     }
     .about-text{
       line-height:1.8;
       font-size:17px;
+      color:#f5f5f5;
+    }
+
+    .about-list { 
+      margin-top:25px; 
+      line-height:1.8; 
+      font-size:16px; 
+      text-align:left;
+      display:inline-block;
+    }
+    .about-list li { 
+      margin-bottom:10px; 
+      color:#fff; 
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width:768px){
+      .navbar { padding:15px 5%; }
+      .menu { gap:15px; font-size:14px; }
+      .about-container{ padding:30px; }
     }
   </style>
 </head>
@@ -62,17 +115,20 @@
   </nav>
 
   <section class="about-container">
+    <img src="https://pbs.twimg.com/profile_images/1837729176704765956/35jtbVs3_400x400.jpg" alt="Yashwant Sirsate" class="profile-img">
     <h2 class="about-title">About Me</h2>
     <p class="about-text">
-      Hello! My name is <strong>Yashwant Sirsate</strong> and I am an aspiring software developer with a passion for
+      Hello! My name is <strong style="color:#ffea00;">Yashwant Sirsate</strong> and I am an aspiring software developer with a passion for
       technology and innovation. I enjoy learning new skills and constantly challenging myself in different areas of programming.
       My interests include web development, problem solving and working on ideas that can make a positive impact
       on the world.<br><br>
       I aim to create my own startup or IT company in the future. I am highly interested in learning how to build
-      and develop web , applications and constantly enjoy exploring and creating new projects.
+      and develop web applications and constantly enjoy exploring and creating new projects.
       Apart from coding, I like watching geopolitics news and playing chess.<br><br>
-      <strong>Location:</strong> Nagpur
+      <strong style="color:#ffea00;">Location:</strong> Nagpur
     </p>
+
+   
   </section>
 </body>
 </html>
