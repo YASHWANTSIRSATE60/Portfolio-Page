@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Yashwant Sirsate</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body { background:#f0f5ff; color:#333; }
+    a { text-decoration:none; color:inherit; }
+    ul { list-style:none; }
+
+    /* ====== NAVBAR ====== */
+    .navbar {
+      width:100%; padding:15px 10%;
+      display:flex; justify-content:space-between; align-items:center;
+      background:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.06);
+      position:sticky; top:0; z-index:10;
+    }
+    .logo { font-weight:700; font-size:25px; }
+    .menu { display:flex; gap:30px; }
+    .menu a { padding:5px 0; border-bottom:2px solid transparent; transition:.3s; }
+    .menu a:hover, .menu .active { color:#0077ff; border-color:#0077ff; }
+
+    /* ====== ABOUT SECTION ====== */
+    .about-container{
+      max-width:900px;
+      margin:80px auto;
+      background:#fff;
+      padding:50px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.1);
+      border-radius:15px;
+    }
+    .about-title{
+      font-size:32px;
+      margin-bottom:15px;
+      color:#0077ff;
+      font-weight:600;
+    }
+    .about-text{
+      line-height:1.8;
+      font-size:17px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Yashwant Sirsate</div>
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="resume.html">Resume</a></li>
+    </ul>
+  </nav>
+
+  <section class="about-container">
+    <h2 class="about-title">About Me</h2>
+    <p class="about-text">
+      Hello! My name is <strong>Yashwant Sirsate</strong> and I am an aspiring software developer with a passion for
+      technology and innovation. I enjoy learning new skills and constantly challenging myself in different areas of programming.
+      My interests include web development, problem solving and working on ideas that can make a positive impact
+      on the world.<br><br>
+      I aim to create my own startup or IT company in the future. I am highly interested in learning how to build
+      and develop web , applications and constantly enjoy exploring and creating new projects.
+      Apart from coding, I like watching geopolitics news and playing chess.<br><br>
+      <strong>Location:</strong> Nagpur
+    </p>
+  </section>
+</body>
+</html>

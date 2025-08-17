@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yashwant Sirsate | Portfolio</title>
+  <style>
+    /* ======== GLOBAL ======== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: #f0f5ff;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul { list-style: none; }
+
+    /* ======== NAVBAR ======== */
+    .navbar {
+      width: 100%;
+      padding: 15px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 25px;
+    }
+    .menu {
+      display: flex;
+      gap: 30px;
+    }
+    .menu a {
+      padding: 5px 0;
+      transition: .3s;
+      border-bottom: 2px solid transparent;
+    }
+    .menu a:hover,
+    .menu .active {
+      color: #0077ff;
+      border-color: #0077ff;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #333;
+      border-radius: 2px;
+    }
+
+    /* ======== HERO ======== */
+    .hero {
+      min-height: 92vh;
+      background: linear-gradient(135deg,#0ea5e9,#4f46e5);
+      padding: 70px 10%;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .profile-img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid rgba(255,255,255,0.7);
+      margin-bottom: 25px;
+    }
+    h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    span { color: #ffe800; }
+    .tagline {
+      font-size: 20px;
+      height: 24px;
+    }
+
+    /* ======== Responsive ======== */
+    @media (max-width: 768px) {
+      .menu { 
+        flex-direction: column;
+        gap: 20px;
+        position: absolute;
+        top: 70px;
+        right: 10%;
+        background:#fff;
+        width: 180px;
+        padding: 20px;
+        box-shadow:0 4px 12px rgba(0,0,0,.1);
+        display: none;
+      }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">Yashwant Sirsate</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+    <ul class="menu" id="menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="resume.html">Resume</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="https://pbs.twimg.com/profile_images/1837729176704765956/35jtbVs3_400x400.jpg" alt="Profile" class="profile-img" />
+  <h2>Hi, I'm <span>Yashwant Sirsate</span></h2>
+  <p class="tagline" id="typing"></p>
+</section>
+
+<script>
+  // MENU TOGGLE
+  function toggleMenu() {
+    const m = document.getElementById("menu");
+    if (m.style.display === "flex") {
+      m.style.display = "none";
+    } else {
+      m.style.display = "flex";
+    }
+  }
+
+  // TYPING EFFECT
+  const text = "Aspiring Software Developer";
+  let idx = 0;
+  function type() {
+    if (idx < text.length) {
+      document.getElementById("typing").innerHTML += text.charAt(idx);
+      idx++;
+      setTimeout(type, 100);
+    }
+  }
+  window.onload = type;
+</script>
+
+</body>
+</html>
