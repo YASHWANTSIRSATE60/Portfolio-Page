@@ -3,13 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home | Yashwant Sirsate</title>
-
-  <!-- Google Font -->
+  <title>Yashwant Sirsate | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
     * {
       margin: 0;
@@ -67,8 +63,21 @@
       border-color: #ffea00;
     }
 
-    /* ====== HERO SECTION ====== */
-    .hero {
+    /* Page Container */
+    .page-container {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    .page-container.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ====== HOME PAGE ====== */
+    #home-page {
       min-height: 90vh;
       display: flex;
       align-items: center;
@@ -167,96 +176,350 @@
     .profile-img:hover {
       transform: perspective(800px) rotateY(0);
     }
-    
-    /* ====== FEATURED SECTION ====== */
-    .featured-section {
-      padding: 80px 10%;
-      background: rgba(0, 0, 0, 0.2);
-    }
-    
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 3rem;
-      color: #ffea00;
-    }
-    
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-    
-    .feature-card {
+
+    /* ====== ABOUT PAGE ====== */
+    #about-page {
+      max-width: 900px;
+      margin: 80px auto;
       background: rgba(0, 0, 0, 0.4);
-      padding: 30px;
+      padding: 50px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
       border-radius: 15px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: transform .3s;
     }
-    
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    #about-page:hover { transform: translateY(-5px); }
+
+    .about-profile-img {
+      width:150px; 
+      height:150px;
+      border-radius:50%;
+      object-fit:cover;
+      margin-bottom:20px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.3);
+      border:3px solid #ffea00;
     }
-    
-    .feature-icon {
-      font-size: 2.5rem;
-      color: #ffea00;
+
+    .about-title{
+      font-size:32px;
+      margin-bottom:15px;
+      color:#ffea00;
+      font-weight:600;
+    }
+    .about-text{
+      line-height:1.8;
+      font-size:17px;
+      color:#f5f5f5;
+      text-align: left;
       margin-bottom: 20px;
     }
-    
-    .feature-title {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
+
+    .about-list { 
+      margin-top:25px; 
+      line-height:1.8; 
+      font-size:16px; 
+      text-align:left;
+      display:inline-block;
+    }
+    .about-list li { 
+      margin-bottom:10px; 
+      color:#fff; 
+    }
+
+    /* ====== SKILLS PAGE ====== */
+    #skills-page {
+      max-width: 900px;
+      margin: 80px auto;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 50px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      border-radius: 15px;
     }
     
-    .feature-description {
-      color: #f5f5f5;
-      line-height: 1.6;
-    }
-    
-    /* ====== QUOTE SECTION ====== */
-    .quote-section {
-      padding: 80px 10%;
+    .skills-title {
+      font-size:32px;
+      margin-bottom:30px;
+      color:#ffea00;
+      font-weight:600;
       text-align: center;
-      background: rgba(0, 0, 0, 0.1);
     }
     
-    .quote {
-      font-size: 1.8rem;
-      line-height: 1.6;
-      max-width: 800px;
+    .skill-category {
+      margin-bottom: 30px;
+    }
+    
+    .skill-category-title {
+      font-size: 24px;
+      color: #ffea00;
+      margin-bottom: 15px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid rgba(255, 234, 0, 0.3);
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .skill-item {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    .skill-item:hover {
+      transform: translateY(-5px);
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .skill-icon {
+      font-size: 2rem;
+      color: #ffea00;
+      margin-bottom: 10px;
+    }
+    
+    .skill-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .skill-level {
+      height: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    .skill-progress {
+      height: 100%;
+      background: #ffea00;
+      border-radius: 5px;
+    }
+
+    /* ====== EDUCATION PAGE ====== */
+    #education-page {
+      max-width: 900px;
+      margin: 80px auto;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 50px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      border-radius: 15px;
+    }
+    
+    .education-title {
+      font-size:32px;
+      margin-bottom:30px;
+      color:#ffea00;
+      font-weight:600;
+      text-align: center;
+    }
+    
+    .timeline {
+      position: relative;
       margin: 0 auto;
-      color: #f5f5f5;
-      font-style: italic;
+      padding-left: 30px;
+    }
+    
+    .timeline:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #ffea00;
+    }
+    
+    .timeline-item {
+      margin-bottom: 30px;
       position: relative;
     }
     
-    .quote:before, .quote:after {
-      content: """;
-      font-size: 4rem;
-      color: #ffea00;
-      opacity: 0.5;
+    .timeline-item:before {
+      content: '';
       position: absolute;
+      left: -39px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ffea00;
     }
     
-    .quote:before {
-      top: -30px;
-      left: -40px;
-    }
-    
-    .quote:after {
-      content: """;
-      bottom: -60px;
-      right: -40px;
-    }
-    
-    .quote-author {
-      margin-top: 30px;
+    .timeline-date {
       color: #ffea00;
       font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .timeline-title {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    
+    .timeline-subtitle {
+      color: #f5f5f5;
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+    
+    .timeline-description {
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    /* ====== CONTACT PAGE ====== */
+    #contact-page {
+      max-width: 900px;
+      margin: 80px auto;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 50px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      border-radius: 15px;
+    }
+    
+    .contact-title {
+      font-size:32px;
+      margin-bottom:30px;
+      color:#ffea00;
+      font-weight:600;
+      text-align: center;
+    }
+    
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 234, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #ffea00;
+    }
+    
+    .contact-text {
+      color: #f5f5f5;
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .form-label {
+      font-weight: 600;
+      color: #f5f5f5;
+    }
+    
+    .form-input, .form-textarea {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 1rem;
+    }
+    
+    .form-input:focus, .form-textarea:focus {
+      outline: 2px solid #ffea00;
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background: #ffea00;
+      color: #001f4d;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      align-self: flex-start;
+    }
+    
+    .submit-btn:hover {
+      background: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 234, 0, 0.4);
+    }
+
+    /* ====== RESUME PAGE ====== */
+    #resume-page {
+      max-width: 900px;
+      margin: 80px auto;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 50px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      border-radius: 15px;
+      text-align: center;
+    }
+    
+    .resume-title {
+      font-size:32px;
+      margin-bottom:15px;
+      color:#ffea00;
+      font-weight:600;
+    }
+    
+    .resume-description {
+      line-height:1.8;
+      font-size:17px;
+      color:#f5f5f5;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .resume-download {
+      margin-bottom: 40px;
+    }
+    
+    .resume-embed {
+      width: 100%;
+      height: 500px;
+      border: 2px solid #ffea00;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f5f5f5;
+      font-size: 1.1rem;
     }
     
     /* ====== FOOTER ====== */
@@ -264,6 +527,7 @@
       background: rgba(0, 0, 0, 0.5);
       padding: 30px 10%;
       text-align: center;
+      margin-top: 50px;
     }
     
     .social-links {
@@ -304,7 +568,7 @@
     }
     
     @media (max-width: 900px) {
-      .hero {
+      #home-page {
         flex-direction: column;
         text-align: center;
         padding-top: 50px;
@@ -330,6 +594,10 @@
       .profile-img {
         transform: perspective(800px) rotateY(0);
       }
+      
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
     }
     
     @media (max-width: 768px) {
@@ -346,12 +614,13 @@
         font-size: 2.5rem;
       }
       
-      .features {
-        grid-template-columns: 1fr;
+      #about-page, #skills-page, #education-page, #contact-page, #resume-page {
+        padding: 30px;
+        margin: 50px auto;
       }
       
-      .quote {
-        font-size: 1.4rem;
+      .skills-grid {
+        grid-template-columns: 1fr;
       }
     }
     
@@ -370,12 +639,8 @@
         font-size: 0.9rem;
       }
       
-      .quote:before {
-        left: -20px;
-      }
-      
-      .quote:after {
-        right: -20px;
+      .about-title, .skills-title, .education-title, .contact-title, .resume-title {
+        font-size: 28px;
       }
     }
   </style>
@@ -387,16 +652,17 @@
       <span>Yashwant Sirsate</span>
     </div>
     <ul class="menu">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="education.html">Education</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="resume.html">Resume</a></li>
+      <li><a href="#" class="nav-link active" data-page="home-page">Home</a></li>
+      <li><a href="#" class="nav-link" data-page="about-page">About</a></li>
+      <li><a href="#" class="nav-link" data-page="skills-page">Skills</a></li>
+      <li><a href="#" class="nav-link" data-page="education-page">Education</a></li>
+      <li><a href="#" class="nav-link" data-page="contact-page">Contact</a></li>
+      <li><a href="#" class="nav-link" data-page="resume-page">Resume</a></li>
     </ul>
   </nav>
 
-  <section class="hero">
+  <!-- Home Page -->
+  <section id="home-page" class="page-container active">
     <div class="hero-content">
       <p class="hero-subtitle">Hello, I'm</p>
       <h1 class="hero-title">Yashwant <span>Sirsate</span></h1>
@@ -406,10 +672,10 @@
         My goal is to establish my own IT startup to make a positive impact through technology.
       </p>
       <div class="cta-buttons">
-        <a href="projects.html" class="btn btn-primary">
+        <a href="#" class="btn btn-primary nav-link" data-page="projects-page">
           <i class="fas fa-code"></i> View Projects
         </a>
-        <a href="resume.html" class="btn btn-secondary">
+        <a href="#" class="btn btn-secondary nav-link" data-page="resume-page">
           <i class="fas fa-download"></i> Download Resume
         </a>
       </div>
@@ -419,44 +685,252 @@
     </div>
   </section>
 
-  <section class="featured-section">
-    <h2 class="section-title">What I Do</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-laptop-code"></i>
+  <!-- About Page -->
+  <section id="about-page" class="page-container">
+    <img src="https://pbs.twimg.com/profile_images/1837729176704765956/35jtbVs3_400x400.jpg" alt="Yashwant Sirsate" class="about-profile-img">
+    <h2 class="about-title">About Me</h2>
+    <p class="about-text">
+      Hello! My name is <strong style="color:#ffea00;">Yashwant Sirsate</strong> and I am an aspiring software developer with a passion for
+      technology and innovation. I enjoy learning new skills and constantly challenging myself in different areas of programming.
+      My interests include web development, problem solving and working on ideas that can make a positive impact
+      on the world.
+    </p>
+    <p class="about-text">
+      I aim to create my own startup or IT company in the future. I am highly interested in learning how to build
+      and develop web applications and constantly enjoy exploring and creating new projects.
+      Apart from coding, I like watching geopolitics news and playing chess.
+    </p>
+    <p class="about-text">
+      <strong style="color:#ffea00;">Location:</strong> Nagpur
+    </p>
+  </section>
+
+  <!-- Skills Page -->
+  <section id="skills-page" class="page-container">
+    <h2 class="skills-title">My Skills</h2>
+    
+    <div class="skill-category">
+      <h3 class="skill-category-title">Web Development</h3>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fab fa-html5"></i></div>
+          <div class="skill-name">HTML5</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 90%"></div>
+          </div>
         </div>
-        <h3 class="feature-title">Web Development</h3>
-        <p class="feature-description">
-          Creating responsive and modern web applications using the latest technologies and frameworks.
+        
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+          <div class="skill-name">CSS3</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fab fa-js"></i></div>
+          <div class="skill-name">JavaScript</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 80%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fab fa-react"></i></div>
+          <div class="skill-name">React</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 75%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="skill-category">
+      <h3 class="skill-category-title">Programming Languages</h3>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <div class="skill-name">Python</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 85%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <div class="skill-name">Java</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 70%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-code"></i></div>
+          <div class="skill-name">C++</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 65%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="skill-category">
+      <h3 class="skill-category-title">Other Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-database"></i></div>
+          <div class="skill-name">SQL</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 80%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+          <div class="skill-name">Git</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 75%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+          <div class="skill-name">AWS</div>
+          <div class="skill-level">
+            <div class="skill-progress" style="width: 60%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Page -->
+  <section id="education-page" class="page-container">
+    <h2 class="education-title">Education</h2>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2020 - 2024</div>
+        <h3 class="timeline-title">Bachelor of Technology in Computer Science</h3>
+        <div class="timeline-subtitle">XYZ Institute of Technology, Nagpur</div>
+        <p class="timeline-description">
+          Currently pursuing my degree in Computer Science with a focus on software development, 
+          algorithms, and data structures. Participated in various coding competitions and tech fests.
         </p>
       </div>
       
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-lightbulb"></i>
-        </div>
-        <h3 class="feature-title">Problem Solving</h3>
-        <p class="feature-description">
-          Solving complex problems with efficient algorithms and logical thinking.
+      <div class="timeline-item">
+        <div class="timeline-date">2018 - 2020</div>
+        <h3 class="timeline-title">Higher Secondary Education</h3>
+        <div class="timeline-subtitle">ABC Junior College, Nagpur</div>
+        <p class="timeline-description">
+          Completed my 12th standard with specialization in Science and Mathematics. 
+          Developed interest in programming during this time.
         </p>
       </div>
       
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-rocket"></i>
-        </div>
-        <h3 class="feature-title">Innovation</h3>
-        <p class="feature-description">
-          Developing innovative solutions and working on ideas that can make a positive impact.
+      <div class="timeline-item">
+        <div class="timeline-date">2018</div>
+        <h3 class="timeline-title">Secondary Education</h3>
+        <div class="timeline-subtitle">ST. Mary's School, Nagpur</div>
+        <p class="timeline-description">
+          Completed my 10th standard with distinction. Developed foundational skills in mathematics and logical reasoning.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="quote-section">
-    <p class="quote">The computer was born to solve problems that did not exist before. I aim to create solutions for tomorrow's challenges today.</p>
-    <p class="quote-author">- Yashwant Sirsate</p>
+  <!-- Contact Page -->
+  <section id="contact-page" class="page-container">
+    <h2 class="contact-title">Get In Touch</h2>
+    
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-text">
+            <h3>Location</h3>
+            <p>Nagpur, Maharashtra, India</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <h3>Email</h3>
+            <p>yashwant.sirsate@example.com</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-text">
+            <h3>Phone</h3>
+            <p>+91 9876543210</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="contact-text">
+            <h3>Availability</h3>
+            <p>Available for freelance projects and internships</p>
+          </div>
+        </div>
+      </div>
+      
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" id="name" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" id="email" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject" class="form-label">Subject</label>
+          <input type="text" id="subject" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" class="form-textarea" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Resume Page -->
+  <section id="resume-page" class="page-container">
+    <h2 class="resume-title">My Resume</h2>
+    <p class="resume-description">
+      Here you can download my resume to learn more about my background, skills, and experience.
+      Feel free to reach out if you have any questions or opportunities.
+    </p>
+    
+    <div class="resume-download">
+      <a href="#" class="btn btn-primary">
+        <i class="fas fa-download"></i> Download Resume (PDF)
+      </a>
+    </div>
+    
+    <div class="resume-embed">
+      <p>Resume preview would be displayed here</p>
+    </div>
   </section>
 
   <footer class="footer">
@@ -468,5 +942,28 @@
     </div>
     <p class="copyright">© 2023 Yashwant Sirsate. All Rights Reserved.</p>
   </footer>
+
+  <script>
+    // Simple navigation system
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const pages = document.querySelectorAll('.page-container');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Remove active class from all links and pages
+          navLinks.forEach(navLink => navLink.classList.remove('active'));
+          pages.forEach(page => page.classList.remove('active'));
+          
+          // Add active class to clicked link and corresponding page
+          this.classList.add('active');
+          const pageId = this.getAttribute('data-page');
+          document.getElementById(pageId).classList.add('active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
