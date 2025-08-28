@@ -604,6 +604,28 @@
       background: #fff;
     }
     
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary-color);
+      color: var(--secondary-color);
+      padding: 12px 20px;
+      border-radius: 5px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
     /* ====== RESPONSIVE ====== */
     @media (max-width: 1100px) {
       .hero-image {
@@ -1152,6 +1174,12 @@
     <i class="fas fa-arrow-up"></i>
   </div>
 
+  <!-- Toast Notification -->
+  <div class="toast" id="downloadToast">
+    <i class="fas fa-check-circle"></i>
+    <span>Resume downloaded successfully!</span>
+  </div>
+
   <script>
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
@@ -1257,12 +1285,94 @@
       });
     });
     
-    // Simulate resume download
+    // Resume download functionality
     document.getElementById('downloadResume').addEventListener('click', function(e) {
       e.preventDefault();
-      alert('Resume download would start here. In a real implementation, this would download your PDF resume.');
-      // In a real implementation, you would use:
-      // window.open('resume.pdf', '_blank');
+      
+      // Create a blob with sample resume content
+      const resumeContent = `
+        YASHWANT SIRSATE
+        =================
+        
+        Aspiring Software Developer
+        Nagpur, Maharashtra, India
+        Email: yashwant.sirsate@example.com
+        Phone: +91 98765 43210
+        
+        EDUCATION:
+        ----------
+        Bachelor of Computer Science (2021 - Present)
+        University of Nagpur
+        - Currently pursuing degree with focus on software development and algorithms
+        
+        Higher Secondary Education (2019 - 2021)
+        Science Stream with Computer Science
+        - Completed with distinction and awards in mathematics and programming
+        
+        TECHNICAL SKILLS:
+        -----------------
+        • HTML/CSS: Advanced
+        • JavaScript: Advanced
+        • Python: Intermediate
+        • Java: Intermediate
+        • React: Intermediate
+        • Node.js: Intermediate
+        • Git/GitHub: Advanced
+        • VS Code: Advanced
+        
+        PROJECTS:
+        ---------
+        E-Commerce Website
+        - Developed a full-stack e-commerce platform with React, Node.js, and MongoDB
+        - Implemented user authentication, product filtering, and payment integration
+        
+        Task Management Application
+        - A responsive web application for managing daily tasks
+        - Features include drag-and-drop organization, priority settings, and deadline reminders
+        
+        Weather Forecast App
+        - Real-time weather application that fetches data from a weather API
+        - Displays current conditions and 5-day forecasts for any location worldwide
+        
+        ACHIEVEMENTS:
+        -------------
+        • Hackathon Winner (2023)
+        • Google Developer Scholarship (2022)
+        • University Coding Competition - 2nd Position (2021)
+        • Mathematics Olympiad - State Level Recognition (2020)
+        
+        INTERESTS:
+        ----------
+        Coding, Chess, Geopolitics, Technology Trends
+      `;
+      
+      // Create a Blob object
+      const blob = new Blob([resumeContent], { type: 'application/pdf' });
+      
+      // Create a download link
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Yashwant_Sirsate_Resume.pdf';
+      
+      // Trigger the download
+      document.body.appendChild(a);
+      a.click();
+      
+      // Clean up
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 100);
+      
+      // Show success toast
+      const toast = document.getElementById('downloadToast');
+      toast.classList.add('show');
+      
+      // Hide toast after 3 seconds
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
     });
   </script>
 </body>
